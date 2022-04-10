@@ -1,0 +1,45 @@
+.register {
+    form {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        background-color: #fff;
+        padding: 24px;
+        border-radius: 8px;
+        box-shadow: 4px 4px 100px 1px rgb(0 0 0 / 25%);
+        width: 100%;
+        max-width: 500px;
+        input[type="text"],
+        .main form input[type="email"],
+        .main form input[type="password"] {
+            width: 100%;
+            max-width: 312px;
+            margin-top: 16px;
+            border-radius: 8px;
+            border: 1px solid #cacaca;
+            color: #cacaca;
+            padding: 12px 8px;
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-origin: content-box;
+            text-indent: 32px;
+        }
+        input[type="submit"] {
+            padding: 12px 8px;
+            color: #fff;
+            width: 100%;
+            max-width: 312px;
+            margin-top: 16px;
+            border-radius: 8px;
+            background: var(--gradient);
+            border: none;
+        }
+        .form-group {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+}
