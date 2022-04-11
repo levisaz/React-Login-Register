@@ -1,0 +1,96 @@
+.login {
+  max-height: 100vh;
+  background-color: #ffd302;
+
+  .column1-ust {
+    background-image: url("../assets/ustGraduatesBackground.png");
+    background-size: cover;
+    height: 100vh;
+    text-align: center;
+    padding-top: 15%;
+
+    .ust-logo {
+      margin-top: -2%;
+    }
+    .pontifical-text,
+    .thomasian-text {
+      margin-top: 1.5%;
+      font-family: "Raleway", sans-serif;
+    }
+
+    .thomasian-text {
+      font-weight: bold;
+    }
+  }
+
+  .column2-login {
+    padding: 5% 3% 2% 3%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .header-text {
+      border-left: 6px solid #f8ba0c;
+      height: 110%;
+      text-align: left;
+      padding-top: 3%;
+      padding-left: 3%;
+      margin-left: -4.5%;
+
+      .college-text {
+        color: #a5a4a4;
+        font-size: large;
+        font-family: "Raleway", sans-serif;
+      }
+
+      .graduate-text {
+        font-weight: 600;
+        margin-top: -1.5%;
+      }
+    }
+
+    .btn-login {
+      background-color: #ffd302;
+      border-radius: 20px;
+      align-self: center;
+      width: 95%;
+      color: white;
+      font-family: "Raleway", sans-serif;
+      font-weight: 600;
+      box-shadow: 1px 4px 5px 0px #d8d8d8;
+    }
+
+    .forms {
+      margin-bottom: -5%;
+      align-self: center;
+      width: 100%;
+    }
+
+    .labels {
+      font-family: "Raleway", sans-serif;
+      font-weight: 600;
+    }
+
+    .fields {
+      background-color: #f0f3f4;
+      border: 1.5px solid #ced4da;
+      border-radius: 10px;
+      height: 30%;
+    }
+    .register-row {
+      text-align: center;
+      width: 100%;
+    }
+
+    .dont-text {
+      font-family: "Raleway", sans-serif;
+    }
+    .register-now-text {
+      color: #ffd302;
+      font-family: "Raleway", sans-serif;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  }
+}
