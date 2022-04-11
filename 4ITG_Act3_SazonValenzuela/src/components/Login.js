@@ -1,11 +1,10 @@
 import React from "react";
 import "../styles/Login.scss";
 import Form from "react-bootstrap/Form";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import ustBackground from "../assets/ustBackground.png";
+import { Container, Row, Col } from "react-bootstrap";
 import ustLogo from "../assets/ustLogo.png";
 import ustCICSLogo from "../assets/ustCICSLogo.png";
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   return (
@@ -31,7 +30,7 @@ const Login = () => {
               <Col className="header-text">
                 <h5 className="college-text">
                   College of Information and Computing Sciences
-                </h5>
+                </h5>  
                 <h3 className="graduate-text">Thomasian Graduates</h3>
               </Col>
             </Row>
@@ -62,7 +61,7 @@ const Login = () => {
             <Row className="register-row">
               <span className="dont-text">
                 Don’t have an account?{" "}
-                <a className="register-now-text"> Register now!</a>
+                <Link className="register-now-text" to="/register"> Register now!</Link>
               </span>
             </Row>
           </Col>

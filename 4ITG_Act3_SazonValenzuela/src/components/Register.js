@@ -1,65 +1,130 @@
 import React from "react";
 import "../styles/Register.scss";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Row, Col } from "react-bootstrap";
+import ustLogo from "../assets/ustLogo.png";
+import ustCICSLogo from "../assets/ustCICSLogo.png";
 const Register = () => {
   return (
-    <Container className="register mt-5 d-flex justify-content-center">
-    
-        <Form>
-        <h2>Register</h2>
-            <Form.Group className="mb-3 form-group" controlId="formBasicEmail">
-                <Form.Label>Student ID Number</Form.Label>
-                <Form.Control type="email" placeholder="2018123456" />
-            </Form.Group>
+    <>
+        <Container fluid className="login">
+            <Row>
+                {/* C1: Form */}
+                <Col className="column2-login" sm={7}>
+                    {/* Row 1: Header */}
+                    <Row>
+                        <Col sm md lg={3}>
+                            {" "}
+                            <img src={ustCICSLogo} alt="ustCICSLogo" width={80} />
+                        </Col>
+                        <Col className="header-text">
+                            <h5 className="college-text">
+                            College of Information and Computing Sciences
+                            </h5>  
+                            <h3 className="graduate-text">Thomasian Graduates</h3>
+                        </Col>
+                        
+                    </Row>
+                    {/* Row 2: Form */}
+                    <Row className="forms">
+                    <h2 className="thomasian-text">Register</h2>
+                    <Form.Group controlId="exampleForm.ControlInput1">
 
-            <Form.Group className="mb-3 form-group" controlId="formBasicEmail">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control type="email" placeholder="Doe" />
-            </Form.Group>
+                        <Row>
+                            <Col>
+                            <Form.Label className="labels">Student Number:</Form.Label>
+                        <Form.Control
+                        type="number"
+                        id="studentNumber"
+                        placeholder="2018118045"
+                        className="mb-2"
+                        />
 
-            <Form.Group className="mb-3 form-group" controlId="formBasicEmail">
-                <Form.Label>Given Name</Form.Label>
-                <Form.Control type="email" placeholder="John" />
-            </Form.Group>
+                        <Form.Label className="labels">Last Name:</Form.Label>
+                        <Form.Control 
+                            type="text"
+                            id="lastName"
+                            placeholder="Dela Cruz"
+                            className="mb-2"
+                        />
 
-            <Form.Group className="mb-3 form-group" controlId="formBasicEmail">
-                <Form.Label>Middle Name</Form.Label>
-                <Form.Control type="email" placeholder="Chesterfieeld" />
-            </Form.Group>
+                        <Form.Label className="labels">Given Name:</Form.Label>
+                        <Form.Control 
+                            type="text"
+                            id="lastName"
+                            placeholder="Juan"
+                            className="mb-2"
+                        />
+                        
+                        <Form.Label className="labels">Middle Name:</Form.Label>
+                        <Form.Control 
+                            type="text"
+                            id="lastName"
+                            placeholder="Martinez"
+                            className="mb-2"
+                        />
 
-            <Form.Group className="mb-3 form-group" controlId="formBasicEmail">
-                <Form.Label>College</Form.Label>
-                <Form.Control type="email" placeholder="CICS" />
-            </Form.Group>
-
-            <Form.Group className="mb-3 form-group" controlId="formBasicEmail">
-                <Form.Label>Program Enrolled</Form.Label>
-                <Form.Control type="email" placeholder="BS Information Technology" />
-            </Form.Group>
-
-            <Form.Group className="mb-3 form-group" controlId="formBasicEmail">
-                <Form.Label>Year Level</Form.Label>
-                <Form.Control type="email" placeholder="4" />
-            </Form.Group>
-
-            <Form.Group className="mb-3 form-group" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-
-            <Form.Group className="mb-3 form-group" controlId="formBasicPassword">
-                <Form.Label>Confirm Password</Form.Label>
-                <Form.Control type="password" placeholder="" />
-            </Form.Group>
-
-            <Form.Group className="mb-3 form-group" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-        </Form>
-    </Container>
+                        <Form.Label className="labels">College:</Form.Label>
+                        <Form.Control 
+                            type="text"
+                            id="lastName"
+                            placeholder="College of Information and Computing Sciences"
+                            className="mb-2"
+                        />
+                            </Col>
+                            <Col>
+                            <Form.Label className="labels">Program Enrolled:</Form.Label>
+                        <Form.Control 
+                            type="text"
+                            id="lastName"
+                            placeholder="BS Information Technology"
+                            className="mb-2"
+                        />
+                        <Form.Label className="labels">Year Level:</Form.Label>
+                        <Form.Control 
+                            type="number"
+                            id="lastName"
+                            placeholder="4"
+                            className="mb-2"
+                        />
+                        <Form.Label className="labels">Password:</Form.Label>
+                        <Form.Control
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        aria-describedby="passwordHelpBlock"
+                        className="mb-2"
+                        />
+                        <Form.Label className="labels">Confirm Password:</Form.Label>
+                        <Form.Control
+                        type="password"
+                        id="password"
+                        placeholder="Confirm Password"
+                        aria-describedby="passwordHelpBlock"
+                        className="mb-2"
+                        />
+                            </Col>
+                        </Row>
+                        
+                        
+                    </Form.Group>
+                    </Row>
+                    <button type="button" className="btn btn-login">
+                    Register
+                    </button>
+                    
+                </Col>
+                {/* C2: UST Background */}
+                <Col className="column1-ust" >
+                <img className="ust-logo" src={ustLogo} alt="ustLogo" width={180} />
+                <h5 className="pontifical-text">
+                    Pontifical and Royal <br /> The University of Santo Tomas
+                </h5>
+                <h2 className="thomasian-text">Thomasian Graduates</h2>
+                </Col>
+            
+            </Row>
+        </Container>
+    </>
   );
 };
 
