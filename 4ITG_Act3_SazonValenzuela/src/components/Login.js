@@ -46,7 +46,7 @@ const Login = (props) => {
             </Row>
             {/* Row 2: Form */}
             <Row className="forms">
-              <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Group>
                 <Form.Label className="labels">Student Number:</Form.Label>
                 <Form.Control
                   type="number"
