@@ -1,6 +1,5 @@
 //React
 import React from "react";
-import Form from "react-bootstrap/Form";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -9,14 +8,8 @@ import { useState } from "react";
 import "../styles/Login.scss";
 
 import ustLogo from "../assets/ustLogo.png";
-import ustCICSLogo from "../assets/ustCICSLogo.png";
 
-import ConfirmModal from "./ConfirmModal";
-const Login = (props) => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+const Portal = () => {
   return (
     <>
       <Container fluid className="login">
@@ -40,4 +33,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Portal;
