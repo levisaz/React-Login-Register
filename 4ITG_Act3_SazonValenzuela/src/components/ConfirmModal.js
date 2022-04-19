@@ -1,5 +1,10 @@
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
+//Assets
+import "../styles/Login.scss";
+
 const ConfirmModal = ({ show, handleClose }) => {
   return (
     <>
@@ -9,11 +14,15 @@ const ConfirmModal = ({ show, handleClose }) => {
         </Modal.Header>
         <Modal.Body>Welcome to Thomasian Graduates! 🎓</Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="success" onClick={handleClose}>
-            Confirm
+          <Button variant="primary">
+            {" "}
+            <Link className="portal-text" to="/portal">
+              {" "}
+              Confirm
+            </Link>
           </Button>
         </Modal.Footer>
       </Modal>
