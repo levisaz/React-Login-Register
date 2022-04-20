@@ -8,8 +8,7 @@ import "../styles/Login.scss";
 
 import ustLogo from "../assets/ustLogo.png";
 
-const Login = () => {
-
+const Portal = () => {
   return (
     <>
       <Container fluid className="login">
@@ -33,4 +32,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Portal;
