@@ -9,7 +9,6 @@ export default class Register extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       show: false,
       studentNumber: "",
@@ -105,7 +104,7 @@ export default class Register extends Component {
                         placeholder="2018118045"
                         className="mb-2"
                         onChange={this.handleChange}
-                        required
+                        required={true}
                       />
 
                       <Form.Label className="labels">Last Name:</Form.Label>
@@ -115,6 +114,8 @@ export default class Register extends Component {
                         placeholder="Dela Cruz"
                         className="mb-2"
                         onChange={this.handleChange}
+                        required={true}
+                        pattern="[A-Za-z]"
                       />
 
                       <Form.Label className="labels">Given Name:</Form.Label>
@@ -124,6 +125,8 @@ export default class Register extends Component {
                         placeholder="Juan"
                         className="mb-2"
                         onChange={this.handleChange}
+                        required={true}
+                        pattern="[A-Za-z]"
                       />
 
                       <Form.Label className="labels">Middle Name:</Form.Label>
@@ -133,6 +136,8 @@ export default class Register extends Component {
                         placeholder="Martinez"
                         className="mb-2"
                         onChange={this.handleChange}
+                        required={true}
+                        pattern="[A-Za-z]"
                       />
 
                       <Form.Label className="labels">College:</Form.Label>
@@ -142,6 +147,8 @@ export default class Register extends Component {
                         placeholder="College of Information and Computing Sciences"
                         className="mb-5"
                         onChange={this.handleChange}
+                        required={true}
+                        pattern="[A-Za-z]"
                       />
                     </Col>
                     <Col>
@@ -154,6 +161,8 @@ export default class Register extends Component {
                         placeholder="BS Information Technology"
                         className="mb-2"
                         onChange={this.handleChange}
+                        required={true}
+                        pattern="[A-Za-z]"
                       />
                       <Form.Label className="labels">Year Level:</Form.Label>
                       <Form.Control
@@ -162,6 +171,8 @@ export default class Register extends Component {
                         placeholder="4"
                         className="mb-2"
                         onChange={this.handleChange}
+                        required={true}
+                        
                       />
                       <Form.Label className="labels">Password:</Form.Label>
                       <Form.Control
@@ -171,6 +182,7 @@ export default class Register extends Component {
                         aria-describedby="passwordHelpBlock"
                         className="mb-2"
                         onChange={this.handleChange}
+                        required={true}
                       />
                       <Form.Label className="labels">
                         Confirm Password:
@@ -182,6 +194,7 @@ export default class Register extends Component {
                         aria-describedby="passwordHelpBlock"
                         className="mb-2"
                         onChange={this.handleChange}
+                        required={true}
                       />
                     </Col>
                   </Row>
