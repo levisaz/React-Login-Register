@@ -1,0 +1,19 @@
+.btn-secondary {
+    background-color: #858796!important;
+}
+
+.register {
+    .button-holder {
+        display: flex;
+        justify-content: center;
+    }
+    .column2-login {
+        justify-content: start;
+        .forms {
+            margin-top: 5rem;
+        }
+    }
+    button {
+        width: 30%!important;
+    }
+}

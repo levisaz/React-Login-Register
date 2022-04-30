@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../styles/Register.scss";
-import { Container, Form, Row, Col, Modal, Button } from "react-bootstrap";
+import { Container, Form, Row, Col, } from "react-bootstrap";
 import ustLogo from "../assets/ustLogo.png";
 import ustCICSLogo from "../assets/ustCICSLogo.png";
 
@@ -10,7 +10,6 @@ export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false,
       studentNumber: "",
       fName: "",
       lName: "",
@@ -23,56 +22,42 @@ export default class Register extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleShow = this.handleShow.bind(this);
+    
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // event handlers
 
-  handleClose() {
-    this.setState({ show: false });
-  }
-  handleShow() {
-    this.setState({ show: true });
-  }
   handleChange(event) {
     const name = event.target && event.target.id;
     const value = event.target && event.target.value;
     this.setState({ [name]: value });
-    //console.log(event.target.value)
+    console.log(event.target.value)
   }
+
   handleSubmit(event) {
-    if (
-      this.state.studentNumber === "" &&
-      this.state.fName === "" &&
-      this.state.lName === "" &&
-      this.state.mName === "" &&
-      this.state.college === "" &&
-      this.state.prog === "" &&
-      this.state.year === "" &&
-      this.state.pass === "" &&
-      this.state.confirm === ""
-    ) {
-      alert("All fields in the form must be filled.");
-    } else if (this.state.pass === this.state.confirm) {
+    
+    if (this.state.pass === this.state.confirm) {
       console.log(this.state);
       localStorage.setItem("Register", JSON.stringify(this.state));
       alert("Registered Successfuly!");
       document.location.href = "/";
-    } else {
-      alert("Password doesn't match!");
-      console.log(this.state);
+    } else if (this.state.pass !== this.state.confirm) {
+      alert("Password doesn't match!")      
     }
   }
+
+  
+
   reset() {
-    window.reload();
+    window.location.reload();
   }
+
 
   render() {
     return (
       <>
-        <Container fluid className="login">
+        <Container fluid className="login register">
           <Row>
             {/* C1: Form */}
             <Col className="column2-login" sm={7}>
@@ -95,16 +80,22 @@ export default class Register extends Component {
                 <Form.Group>
                   <Row>
                     <Col>
+                    
                       <Form.Label className="labels">
                         Student Number:
                       </Form.Label>
                       <Form.Control
-                        type="number"
+                        type="text"
                         id="studentNumber"
                         placeholder="2018118045"
                         className="mb-2"
                         onChange={this.handleChange}
                         required={true}
+                        
+                        pattern="[0-9]+"
+                        maxLength={10}
+                        minLength={10}
+                        title="Please enter numeric inputs only"
                       />
 
                       <Form.Label className="labels">Last Name:</Form.Label>
@@ -115,7 +106,7 @@ export default class Register extends Component {
                         className="mb-2"
                         onChange={this.handleChange}
                         required={true}
-                        pattern="[A-Za-z]"
+                        pattern="[a-zA-Z]*"
                       />
 
                       <Form.Label className="labels">Given Name:</Form.Label>
@@ -126,7 +117,7 @@ export default class Register extends Component {
                         className="mb-2"
                         onChange={this.handleChange}
                         required={true}
-                        pattern="[A-Za-z]"
+                        pattern="[a-zA-Z]*"
                       />
 
                       <Form.Label className="labels">Middle Name:</Form.Label>
@@ -137,7 +128,7 @@ export default class Register extends Component {
                         className="mb-2"
                         onChange={this.handleChange}
                         required={true}
-                        pattern="[A-Za-z]"
+                        pattern="[a-zA-Z]*"
                       />
 
                       <Form.Label className="labels">College:</Form.Label>
@@ -148,10 +139,22 @@ export default class Register extends Component {
                         className="mb-5"
                         onChange={this.handleChange}
                         required={true}
-                        pattern="[A-Za-z]"
+                        pattern="[a-zA-Z]*"
                       />
                     </Col>
                     <Col>
+                      <Form.Label className="labels">Year Level:</Form.Label>
+                        <Form.Control
+                          type="text"
+                          id="year"
+                          placeholder="4"
+                          className="mb-2"
+                          onChange={this.handleChange}
+                          required={true}
+                          maxLength={1}
+                          pattern="[0-9]+"
+                          title="Please enter numeric inputs only"
+                        />
                       <Form.Label className="labels">
                         Program Enrolled:
                       </Form.Label>
@@ -162,17 +165,7 @@ export default class Register extends Component {
                         className="mb-2"
                         onChange={this.handleChange}
                         required={true}
-                        pattern="[A-Za-z]"
-                      />
-                      <Form.Label className="labels">Year Level:</Form.Label>
-                      <Form.Control
-                        type="number"
-                        id="year"
-                        placeholder="4"
-                        className="mb-2"
-                        onChange={this.handleChange}
-                        required={true}
-                        
+                        pattern="[a-zA-Z]*"
                       />
                       <Form.Label className="labels">Password:</Form.Label>
                       <Form.Control
@@ -183,6 +176,8 @@ export default class Register extends Component {
                         className="mb-2"
                         onChange={this.handleChange}
                         required={true}
+                        pattern="(?=.*[_\W])(?=.*?[#?!@$%^&*-\]\[])(?=.*[A-Z]).{8,}" 
+                        title="Must contain at least (1) number and (1) uppercase character, (1) special character, and at least (8) or more characters"
                       />
                       <Form.Label className="labels">
                         Confirm Password:
@@ -195,38 +190,33 @@ export default class Register extends Component {
                         className="mb-2"
                         onChange={this.handleChange}
                         required={true}
+                        pattern="(?=.*[_\W])(?=.*\d)(?=.*[A-Z]).{8,}" 
+                        title="Must contain at least (1) number and (1) uppercase character, (1) special character, and at least (8) or more characters"
                       />
+                      
                     </Col>
                   </Row>
                 </Form.Group>
-                {/* modal */}
-                <Modal show={this.state.show} onHide={this.handleClose}>
-                  <Modal.Header closeButton>
-                    <Modal.Title>Register</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>Register to Thomasian Graduates</Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="secondary" onClick={this.handleClose}>
-                      Cancel
-                    </Button>
-                    <Button
-                      variant="success"
-                      type="submit"
-                      onClick={this.handleSubmit}
-                    >
-                      Register
-                    </Button>
-                  </Modal.Footer>
-                </Modal>
-              </Form>
+                
+                <div className="button-holder">
+                <button
+                  type="button"
+                  className="btn btn-login mb-3 mx-3 btn-secondary"
+                  onClick={this.reset}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="btn btn-login mb-3 mx-3"
 
-              <button
-                type="button"
-                className="btn btn-login mb-3"
-                onClick={this.handleShow}
-              >
-                Register
-              </button>
+                >
+                  Register
+                </button>
+              </div>
+              </Form>
+              
+              
             </Col>
             {/* C2: UST Background */}
             <Col className="column1-ust">
