@@ -40,7 +40,8 @@ export default class Register extends Component {
       console.log(this.state);
       localStorage.setItem('Register', JSON.stringify(this.state));
       alert('Registered Successfuly!');
-      document.location.href = '/';
+      localStorage.getItem('Register');
+      window.location = '/';
     } else if (this.state.pass !== this.state.confirm) {
       alert("Password doesn't match!");
     }
@@ -202,6 +203,12 @@ export default class Register extends Component {
                   <button type='submit' className='btn btn-login mb-3 mx-3'>
                     Register
                   </button>
+                </div>
+
+                <div className='back d-flex justify-content-center'>
+                  <a href='/' className='align-center'>
+                    Go back to login
+                  </a>
                 </div>
               </Form>
             </Col>
