@@ -1,30 +1,52 @@
 //React
 import React from "react";
 import Form from "react-bootstrap/Form";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 //Assets
 import "../styles/Login.scss";
-
 import ustLogo from "../assets/ustLogo.png";
 import ustCICSLogo from "../assets/ustCICSLogo.png";
 
-import ConfirmModal from "./ConfirmModal";
-const Login = (props) => {
-  //Modal
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+const Login = () => {
+  //Details
   const [studentNumberInput, setStudentNumberInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
+  const [items, setItems] = useState([]);
 
-  const remove = () => {
-    localStorage.removeItem("Name");
-    localStorage.removeItem("Password");
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("Register"));
+    if (items) {
+      setItems(items);
+    }
+  }, []);
+
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = () => {
+    if (
+      studentNumberInput == items.studentNumber &&
+      passwordInput == items.pass
+    ) {
+      Swal.fire({
+        title: "Successful Login",
+        text: "Redirecting to Portal",
+      }).then(() => {
+        console.log("di ko na lam");
+      });
+    } else {
+      Swal.fire({
+        title: "Unsuccessful Login",
+        text: "Credentials do not match",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    }
   };
+
   return (
     <>
       <Container fluid className="login">
@@ -54,50 +76,55 @@ const Login = (props) => {
             </Row>
             {/* Row 2: Form */}
             <Row className="forms">
-              <Form.Group>
-                <Form.Label className="labels">Student Number:</Form.Label>
-                <Form.Control
-                  type="number"
-                  id="studentNumber"
-                  placeholder="2018118045"
-                  className="mb-4 fields"
-                  name="studentNumberInput"
-                  required
-                />
+              <Form onSubmit={handleSubmit} id="form-onclick">
+                <Form.Group>
+                  <Form.Label className="labels">Student Number:</Form.Label>
+                  <Form.Control
+                    required={true}
+                    type="text"
+                    minLength={10}
+                    id="studentNumber"
+                    maxLength={10}
+                    placeholder="2018118045"
+                    className="mb-4 fields"
+                    name="studentNumberInput"
+                    onChange={(e) => setStudentNumberInput(e.target.value)}
+                  />
 
-                <Form.Label className="labels">Password:</Form.Label>
-                <Form.Control
-                  type="password"
-                  id="password"
-                  placeholder="enter password"
-                  aria-describedby="passwordHelpBlock"
-                  className="fields"
-                  name="passwordInput"
-                  required
-                />
-              </Form.Group>
-            </Row>
-
-            <Row>
-              <Col>
-                {" "}
-                <button
-                  type="button"
-                  className="btn btn-cancel"
-                  typeof="onSubmit"
-                >
-                  Cancel
-                </button>
-              </Col>
-              <Col>
-                <button
-                  type="button"
-                  className="btn btn-login"
-                  typeof="onSubmit"
-                >
-                  Login
-                </button>
-              </Col>
+                  <Form.Label className="labels">Password:</Form.Label>
+                  <Form.Control
+                    minLength={8}
+                    required
+                    type="password"
+                    id="password"
+                    placeholder="enter password"
+                    aria-describedby="passwordHelpBlock"
+                    className="fields"
+                    name="passwordInput"
+                    pattern="(?=.*[_\W])(?=.*\d)(?=.*[A-Z]).{8,}"
+                    onChange={(e) => setPasswordInput(e.target.value)}
+                  />
+                </Form.Group>
+                <Row className="row-buttons mb-5">
+                  <Col>
+                    {" "}
+                    <button
+                      type="button"
+                      className="btn btn-cancel"
+                      onClick={() =>
+                        document.getElementById("form-onclick").reset()
+                      }
+                    >
+                      Cancel
+                    </button>
+                  </Col>
+                  <Col>
+                    <button type="submit" className="btn btn-login">
+                      Login
+                    </button>
+                  </Col>
+                </Row>
+              </Form>
             </Row>
 
             {/* <ConfirmModal
