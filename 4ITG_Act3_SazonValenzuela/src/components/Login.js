@@ -9,9 +9,14 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 import "../styles/Login.scss";
 import ustLogo from "../assets/ustLogo.png";
 import ustCICSLogo from "../assets/ustCICSLogo.png";
-import Portal from "./Portal";
 
+import ConfirmModal from "./ConfirmModal";
 const Login = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   //Details
   const [studentNumberInput, setStudentNumberInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
@@ -24,16 +29,35 @@ const Login = () => {
     }
   }, []);
 
-  const handleSubmit = () => {
-    <Portal />;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (
       studentNumberInput == items.studentNumber &&
       passwordInput == items.pass
     ) {
-      Swal.fire({
-        title: "Successful Login",
-        text: "Redirecting to Portal",
-      });
+      // Swal.fire({
+      //   title: "Successful Login",
+      //   showCancelButton: true,
+      //   confirmButtonText: "OK",
+      // });
+      setShow(true);
+
+      // Swal.fire({
+      //   title: "Successful Login",
+      //   showCancelButton: true,
+      //   confirmButtonText: "OK",
+      // }).then((result) => {
+      //   if (result.isConfirmed) {
+      //     setModal(true);
+      //     console.log("may pagasa");
+      //   } else if (result.isDenied) {
+      //     <Link className="register-now-text" to="/">
+      //       {" "}
+      //       Cancel
+      //     </Link>;
+      //   }
+      // });
     } else {
       Swal.fire({
         title: "Unsuccessful Login",
@@ -103,7 +127,7 @@ const Login = () => {
                   />
                 </Form.Group>
                 <Row className="row-buttons mb-5">
-                  <Col>
+                  {/* <Col>
                     {" "}
                     <button
                       type="button"
@@ -115,20 +139,19 @@ const Login = () => {
                       Cancel
                     </button>
                   </Col>
-                  <Col>
-                    <button type="submit" className="btn btn-login">
-                      Login
-                    </button>
-                  </Col>
+                  <Col>  </Col>*/}
+                  <button type="submit" className="btn btn-login">
+                    Login
+                  </button>
                 </Row>
               </Form>
             </Row>
 
-            {/* <ConfirmModal
+            <ConfirmModal
               handleShow={handleShow}
               show={show}
               handleClose={handleClose}
-            /> */}
+            />
 
             <Row className="register-row">
               <span className="dont-text">
