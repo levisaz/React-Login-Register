@@ -65,6 +65,7 @@ const Login = () => {
         icon: "error",
         confirmButtonText: "OK",
       });
+      document.getElementById("formsmoto").reset();
     }
   };
 
@@ -97,7 +98,7 @@ const Login = () => {
             </Row>
             {/* Row 2: Form */}
             <Row className="forms">
-              <Form onSubmit={handleSubmit}>
+              <Form onSubmit={handleSubmit} id="formsmoto">
                 <Form.Group>
                   <Form.Label className="labels">Student Number:</Form.Label>
                   <Form.Control
