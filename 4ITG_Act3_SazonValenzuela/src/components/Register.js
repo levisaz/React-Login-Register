@@ -3,6 +3,7 @@ import "../styles/Register.scss";
 import { Container, Form, Row, Col } from "react-bootstrap";
 import ustLogo from "../assets/ustLogo.png";
 import ustCICSLogo from "../assets/ustCICSLogo.png";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 export default class Register extends Component {
   DATA;
@@ -39,11 +40,17 @@ export default class Register extends Component {
     if (this.state.pass === this.state.confirm) {
       console.log(this.state);
       localStorage.setItem("Register", JSON.stringify(this.state));
-      alert("Registered Successfuly!");
+      Swal.fire({
+        title: "Registed Successfully",
+        text: "Redirecting to Portal",
+      });
       localStorage.getItem("Register");
       window.location = "/";
     } else if (this.state.pass !== this.state.confirm) {
-      alert("Password doesn't match!");
+      Swal.fire({
+        title: "Error!",
+        text: "Passwords don't match",
+      });
     }
   }
 

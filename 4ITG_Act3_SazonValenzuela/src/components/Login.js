@@ -5,11 +5,11 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2/dist/sweetalert2.js";
-
 //Assets
 import "../styles/Login.scss";
 import ustLogo from "../assets/ustLogo.png";
 import ustCICSLogo from "../assets/ustCICSLogo.png";
+import Portal from "./Portal";
 
 const Login = () => {
   //Details
@@ -24,9 +24,8 @@ const Login = () => {
     }
   }, []);
 
-  const [validated, setValidated] = useState(false);
-
   const handleSubmit = () => {
+    <Portal />;
     if (
       studentNumberInput == items.studentNumber &&
       passwordInput == items.pass
@@ -34,8 +33,6 @@ const Login = () => {
       Swal.fire({
         title: "Successful Login",
         text: "Redirecting to Portal",
-      }).then(() => {
-        console.log("di ko na lam");
       });
     } else {
       Swal.fire({
@@ -76,7 +73,7 @@ const Login = () => {
             </Row>
             {/* Row 2: Form */}
             <Row className="forms">
-              <Form onSubmit={handleSubmit} id="form-onclick">
+              <Form onSubmit={handleSubmit}>
                 <Form.Group>
                   <Form.Label className="labels">Student Number:</Form.Label>
                   <Form.Control
@@ -132,8 +129,6 @@ const Login = () => {
               show={show}
               handleClose={handleClose}
             /> */}
-            {localStorage.getItem("studentNumberInput") &&
-              console.log(localStorage.getItem("studentNumberInput"))}
 
             <Row className="register-row">
               <span className="dont-text">
