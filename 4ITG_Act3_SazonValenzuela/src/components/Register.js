@@ -37,6 +37,7 @@ export default class Register extends Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     if (this.state.pass === this.state.confirm) {
       console.log(this.state);
       localStorage.setItem("Register", JSON.stringify(this.state));

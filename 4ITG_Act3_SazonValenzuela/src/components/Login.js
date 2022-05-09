@@ -152,6 +152,8 @@ const Login = () => {
               handleShow={handleShow}
               show={show}
               handleClose={handleClose}
+              studentNumberInput={studentNumberInput}
+              passwordInput={passwordInput}
             />
 
             <Row className="register-row">

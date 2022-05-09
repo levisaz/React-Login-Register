@@ -17,6 +17,7 @@ const ConfirmModal = ({ show, handleClose }) => {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
+          {/* onClick={handleClose} */}
           <Button variant="primary">
             {" "}
             <Link className="portal-text" to="/portal">
